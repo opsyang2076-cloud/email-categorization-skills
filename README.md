@@ -11,17 +11,17 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/yitian-neng-sanfan/email-classifier/actions">
-    <img src="https://github.com/yitian-neng-sanfan/email-classifier/workflows/Test/badge.svg" alt="测试">
+  <a href="https://github.com/opsyang2076-cloud/email-categorization-skills/actions">
+    <img src="https://github.com/opsyang2076-cloud/email-categorization-skills/workflows/Test/badge.svg" alt="测试">
   </a>
-  <a href="https://github.com/yitian-neng-sanfan/email-classifier/blob/main/LICENSE">
+  <a href="https://github.com/opsyang2076-cloud/email-categorization-skills/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="许可证">
   </a>
   <a href="https://python.org">
     <img src="https://img.shields.io/badge/python-3.8+-blue.svg" alt="Python">
   </a>
-  <a href="https://github.com/yitian-neng-sanfan/email-classifier/stargazers">
-    <img src="https://img.shields.io/github/stars/yitian-neng-sanfan/email-classifier.svg?style=social" alt="星标">
+  <a href="https://github.com/opsyang2076-cloud/email-categorization-skills/stargazers">
+    <img src="https://img.shields.io/github/stars/opsyang2076-cloud/email-categorization-skills.svg?style=social" alt="星标">
   </a>
 </p>
 
@@ -64,8 +64,8 @@
 
 ```bash
 # 克隆仓库
-git clone https://github.com/yitian-neng-sanfan/email-classifier.git
-cd email-classifier
+git clone https://github.com/opsyang2076-cloud/email-categorization-skills.git
+cd email-categorization-skills
 
 # 安装依赖
 pip install -r requirements.txt
@@ -110,7 +110,7 @@ python scripts/rule_generator.py --input results.json --format gmail-labels
   forums: 35 封邮件
   personal: 445 封邮件
 
-检测到的高频账户：1
+检测到低频账户：1
   - old-forum@example.com（每天 0.3 封邮件）
     建议：考虑归档或取消订阅
 ============================================================
@@ -248,13 +248,13 @@ pytest tests/ -v
 ## 📞 支持
 
 - 📖 [文档](docs/)
-- 💬 [讨论](https://github.com/yitian-neng-sanfan/email-classifier/discussions)
-- 🐛 [问题追踪](https://github.com/yitian-neng-sanfan/email-classifier/issues)
-- 📧 邮箱：yitian-neng-sanfan@example.com
+- 💬 [讨论](https://github.com/opsyang2076-cloud/email-categorization-skills/discussions)
+- 🐛 [问题追踪](https://github.com/opsyang2076-cloud/email-categorization-skills/issues)
+- 📧 邮箱：opsyang2076@example.com
 
 ## 🌟 Star 历史
 
-[![Star History Chart](https://api.star-history.com/svg?repos=yitian-neng-sanfan/email-classifier&type=Date)](https://star-history.com/#yitian-neng-sanfan/email-classifier&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=opsyang2076-cloud/email-categorization-skills&type=Date)](https://star-history.com/#opsyang2076-cloud/email-categorization-skills&Date)
 
 ---
 
