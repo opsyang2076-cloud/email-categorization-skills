@@ -1,0 +1,84 @@
+# Email Classifier Configuration
+# Copy this file to accounts.yaml and fill in your credentials
+
+accounts:
+  - name: "work"
+    provider: "gmail"  # gmail, outlook, lark, icloud
+    email: "your.work.email@gmail.com"
+    imap_host: "imap.gmail.com"
+    imap_port: 993
+    auth_type: "app_password"  # app_password, oauth, password
+    password: "your-app-password-here"
+    # For Lark/Feishu, use lark-cli instead (see lark-mail skill)
+    
+  - name: "personal"
+    provider: "gmail"
+    email: "your.personal@gmail.com"
+    imap_host: "imap.gmail.com"
+    imap_port: 993
+    auth_type: "app_password"
+    password: "your-app-password-here"
+    
+  - name: "old-forum"
+    provider: "gmail"
+    email: "your.old-forum@gmail.com"
+    imap_host: "imap.gmail.com"
+    imap_port: 993
+    auth_type: "app_password"
+    password: "your-app-password-here"
+    # This account has low frequency - will be flagged
+
+# Processing settings
+settings:
+  # Default days to analyze (can be overridden per-account)
+  default_days: 30
+  
+  # Low frequency threshold (emails per day)
+  low_frequency_threshold: 1.0
+  
+  # Classification confidence threshold (0.0 - 1.0)
+  classification_confidence: 0.7
+  
+  # IMAP fetch batch size
+  batch_size: 100
+  
+  # Enable caching (speeds up subsequent runs)
+  enable_cache: true
+  cache_dir: "~/.email_classifier_cache"
+  
+  # Optional: ML-based classification (requires scikit-learn)
+  enable_ml: false
+  ml_model_path: null
+  
+  # Optional: Custom classification rules
+  custom_rules_file: null
+
+# Output settings
+output:
+  # Default output directory
+  default_dir: "./email_classification_output"
+  
+  # Enable visualization generation
+  generate_charts: true
+  chart_format: "png"
+  
+  # Export formats
+  export_formats:
+    - "yaml"
+    - "gmail-labels"
+    - "csv"
+
+# Logging settings
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  file: null  # Set to log path for file logging
+  max_size_mb: 10
+  backup_count: 3
+
+# Schedule settings (for cron jobs)
+schedule:
+  # Run daily at 2 AM
+  cron_expression: "0 2 * * *"
+  
+  # Auto-cleanup old classifications (days)
+  auto_cleanup_days: 90

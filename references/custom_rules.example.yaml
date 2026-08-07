@@ -1,0 +1,147 @@
+# Email Classifier Custom Rules Example
+
+# Copy this file to custom_rules.yaml and customize for your needs
+
+custom_categories:
+  # Example: Important clients
+  - name: 'important_clients'
+    description: 'Emails from important business clients'
+    weight: 1.5  # Higher weight = more likely to be classified here
+    
+    # Keyword patterns (case-insensitive)
+    keywords:
+      - 'invoice'
+      - 'contract'
+      - 'legal'
+      - 'agreement'
+      - 'proposal'
+      - 'quote'
+      - 'purchase order'
+    
+    # Sender domain patterns (regex)
+    sender_domains:
+      - 'client1\.com'
+      - 'client2\.com'
+      - 'important-partner\.org'
+    
+    # Subject patterns (regex)
+    subject_patterns:
+      - 'invoice.*\d{4}'
+      - 'contract.*signed'
+      - 'legal.*notice'
+    
+    # Exclude patterns (if these match, reduce score)
+    exclude_keywords:
+      - 'unsubscribe'
+      - 'opt-out'
+    
+    # Action when matched
+    action:
+      label: 'Important/Clients'
+      priority: 'high'
+      notify: true
+
+  # Example: Subscription services
+  - name: 'subscriptions'
+    description: 'Subscription and billing services'
+    weight: 1.2
+    
+    keywords:
+      - 'subscription'
+      - 'billing'
+      - 'renewal'
+      - 'payment received'
+      - 'annual fee'
+    
+    sender_domains:
+      - 'stripe\.com'
+      - 'paypal\.com'
+      - 'netflix\.com'
+      - 'spotify\.com'
+      - 'amazon\.com'
+    
+    subject_patterns:
+      - 'your receipt'
+      - 'payment.*received'
+      - 'subscription.*renewed'
+    
+    action:
+      label: 'Subscriptions'
+      priority: 'medium'
+      auto_archive: true
+
+  # Example: Job applications
+  - name: 'job_applications'
+    description: 'Recruitment and job application emails'
+    weight: 1.3
+    
+    keywords:
+      - 'job application'
+      - 'candidate'
+      - 'interview'
+      - 'position'
+      - 'hiring'
+      - 'resume'
+      - 'cv'
+    
+    sender_domains:
+      - 'linkedin\.com'
+      - 'indeed\.com'
+      - 'glassdoor\.com'
+    
+    action:
+      label: 'Job Applications'
+      priority: 'high'
+      notify: true
+
+# Frequency adjustment rules
+frequency_rules:
+  # Reduce classification confidence for these domains
+  low_confidence_domains:
+    - 'newsletter.*'
+    - 'promo.*'
+    - 'marketing.*'
+  
+  # Increase confidence for these patterns
+  high_confidence_patterns:
+    - 'verification.*code'
+    - 'password.*reset'
+    - 'security.*alert'
+
+# Account-specific overrides
+account_overrides:
+  # Example: Special handling for work email
+  - account_pattern: 'work@.*'
+    settings:
+      classification_confidence: 0.8
+      low_frequency_threshold: 2.0
+      enable_notifications: true
+  
+  # Example: Archive old forum emails automatically
+  - account_pattern: '.*@oldforum\.com'
+    settings:
+      auto_archive_after_days: 30
+      low_frequency_threshold: 0.1
+
+# Export format customizations
+export_customizations:
+  gmail:
+    # Gmail label naming convention
+    label_prefix: 'Classified/'
+    label_max_length: 30
+    skip_if_already_exists: true
+  
+  imap:
+    # IMAP flag format
+    flag_prefix: '\\classified_'
+    use_separate_folder: true
+  
+  csv:
+    # CSV column names
+    columns:
+      - 'date'
+      - 'sender'
+      - 'subject'
+      - 'category'
+      - 'confidence'
+      - 'account'

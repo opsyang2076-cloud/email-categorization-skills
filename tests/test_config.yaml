@@ -1,0 +1,61 @@
+# Test configuration for email classifier
+# Used by tests to avoid connecting to real email servers
+
+test_accounts:
+  - name: "test-gmail"
+    provider: "gmail"
+    email: "test@example.com"
+    imap_host: "imap.test-server.com"
+    imap_port: 993
+    auth_type: "test"
+    password: "test-password"
+    
+  - name: "test-outlook"
+    provider: "outlook"
+    email: "test@outlook.com"
+    imap_host: "outlook.test-server.com"
+    imap_port: 993
+    auth_type: "test"
+    password: "test-password"
+
+test_emails:
+  - subject: "Your verification code is 123456"
+    from: "security@github.com"
+    body: "Your verification code is 123456. Do not share this code."
+    expected_category: "verification_codes"
+    
+  - subject: "New follower on LinkedIn"
+    from: "notifications@linkedin.com"
+    body: "John Doe started following you on LinkedIn."
+    expected_category: "social"
+    
+  - subject: "Special offer: 50% off everything!"
+    from: "deals@retailstore.com"
+    body: "Don't miss our special sale. Use code SAVE50."
+    expected_category: "promotions"
+    
+  - subject: "Project deadline update"
+    from: "manager@company.com"
+    body: "Reminder: Project deadline is next Friday."
+    expected_category: "work"
+    
+  - subject: "Receipt for your purchase"
+    from: "receipts@amazon.com"
+    body: "Thank you for your order. Your receipt is attached."
+    expected_category: "transactions"
+
+ground_truth_labels:
+  - email_id: "test-1"
+    category: "verification_codes"
+    
+  - email_id: "test-2"
+    category: "social"
+    
+  - email_id: "test-3"
+    category: "promotions"
+    
+  - email_id: "test-4"
+    category: "work"
+    
+  - email_id: "test-5"
+    category: "transactions"
